@@ -1,0 +1,11 @@
+
+{
+  "name": "Falcon",
+  "version": "0.0.1",
+  "date": "2016-07-17",
+  "title": "Falcon",
+  "author": "outc4sted",
+  "dependencies": ["base", "tankwerkz >= 0.6.0"],
+  "description": "Forked from the Raven, adds weaponry and is a bit faster.",
+  "factorio_version": "0.13"
+}
