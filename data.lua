@@ -2,7 +2,7 @@ data:extend({
   {
     type = "item",
     name = "falcon-1",
-    icon = "__Raven__/raven/Raven_icon.png",
+    icon = "__Falcon__/raven/Raven_icon.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
@@ -12,10 +12,10 @@ data:extend({
   {
     type = "car",
     name = "falcon-1",
-    icon = "__Raven__/raven/Raven_icon.png",
+    icon = "__Falcon__/raven/Raven_icon.png",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "falcon-1"},
-    max_health = 200,
+    max_health = 250,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     energy_per_hit_point = 1,
@@ -24,21 +24,22 @@ data:extend({
     {
       {
         type = "fire",
-        percent = 10
+        percent = 15
       },
       {
         type = "impact",
-        percent = 10,
+        percent = 15,
         decrease = 1
       }
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
-    effectivity = 0.17,
-    braking_power = "20kW",
+    effectivity = 0.75,
+    acceleration_per_energy = 0.95,
+    braking_power = "130kW",
     burner =
     {
-      effectivity = 0.3,
+      effectivity = 0.85,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -52,7 +53,7 @@ data:extend({
         }
       }
     },
-    consumption = "200kW",
+    consumption = "225kW",
     friction = 2e-3,
     light =
     {
@@ -107,52 +108,52 @@ data:extend({
           stripes =
           {
             {
-             filename = "__Raven__/raven/Raven_01.png",
+             filename = "__Falcon__/raven/Raven_01.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_01_2.png",
+             filename = "__Falcon__/raven/Raven_01_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02.png",
+             filename = "__Falcon__/raven/Raven_02.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_2.png",
+             filename = "__Falcon__/raven/Raven_02_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03.png",
+             filename = "__Falcon__/raven/Raven_03.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_2.png",
+             filename = "__Falcon__/raven/Raven_03_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04.png",
+             filename = "__Falcon__/raven/Raven_04.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_2.png",
+             filename = "__Falcon__/raven/Raven_04_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_05.png",
+             filename = "__Falcon__/raven/Raven_05.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Raven__/raven/Raven_05_2.png",
+             filename = "__Falcon__/raven/Raven_05_2.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -169,27 +170,27 @@ data:extend({
           stripes = util.multiplystripes(2,
           {
             {
-             filename = "__Raven__/raven/Raven_01_Shadow.png",
+             filename = "__Falcon__/raven/Raven_01_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_Shadow.png",
+             filename = "__Falcon__/raven/Raven_02_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_Shadow.png",
+             filename = "__Falcon__/raven/Raven_03_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_Shadow.png",
+             filename = "__Falcon__/raven/Raven_04_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_05_Shadow.png",
+             filename = "__Falcon__/raven/Raven_05_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -205,13 +206,13 @@ data:extend({
       },
     },
     sound_minimum_speed = 0.2;
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.5 },
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/car-engine.ogg",
-        volume = 0.6
+        volume = 0.45
       },
       --[[activate_sound =
       {
@@ -221,24 +222,25 @@ data:extend({
       deactivate_sound =
       {
         filename = "__base__/sound/car-engine-stop.ogg",
-        volume = 0.6
+        volume = 0.5
       },
       match_speed_to_activity = true,
     },
     open_sound = { filename = "__base__/sound/car-door-open.ogg", volume=0.7 },
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
-    rotation_speed = 0.003,
+    rotation_speed = 0.008,
     weight = 500,
+    guns = {"hydra-rocket-launcher"},
     inventory_size = 50
   },
   {
     type = "car",
     name = "falcon-2",
-    icon = "__Raven__/raven/Raven_icon.png",
+    icon = "__Falcon__/raven/Raven_icon.png",
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
-    max_health = 200,
+    max_health = 250,
     corpse = "medium-remnants",
     dying_explosion = "medium-explosion",
     energy_per_hit_point = 1,
@@ -251,18 +253,18 @@ data:extend({
       },
       {
         type = "impact",
-        percent = 10,
+        percent = 25,
         decrease = 1
       }
     },
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
   collision_mask = {"not-colliding-with-itself"},
-    effectivity = 0.3,
-    braking_power = "20kW",
+    effectivity = 0.75,
+    braking_power = "130kW",
     burner =
     {
-      effectivity = 0.3,
+      effectivity = 0.85,
       fuel_inventory_size = 1,
       smoke =
       {
@@ -276,7 +278,7 @@ data:extend({
         }
       }
     },
-    consumption = "200kW",
+    consumption = "225kW",
     friction = 1e-3,
     light =
     {
@@ -331,102 +333,102 @@ data:extend({
           stripes =
           {
             {
-             filename = "__Raven__/raven/Raven_01.png",
+             filename = "__Falcon__/raven/Raven_01.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_01_1.png",
+             filename = "__Falcon__/raven/Raven_01_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_01_2.png",
+             filename = "__Falcon__/raven/Raven_01_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_01_3.png",
+             filename = "__Falcon__/raven/Raven_01_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02.png",
+             filename = "__Falcon__/raven/Raven_02.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_1.png",
+             filename = "__Falcon__/raven/Raven_02_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_2.png",
+             filename = "__Falcon__/raven/Raven_02_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_3.png",
+             filename = "__Falcon__/raven/Raven_02_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03.png",
+             filename = "__Falcon__/raven/Raven_03.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_1.png",
+             filename = "__Falcon__/raven/Raven_03_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_2.png",
+             filename = "__Falcon__/raven/Raven_03_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_3.png",
+             filename = "__Falcon__/raven/Raven_03_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04.png",
+             filename = "__Falcon__/raven/Raven_04.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_1.png",
+             filename = "__Falcon__/raven/Raven_04_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_2.png",
+             filename = "__Falcon__/raven/Raven_04_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_3.png",
+             filename = "__Falcon__/raven/Raven_04_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_05.png",
+             filename = "__Falcon__/raven/Raven_05.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Raven__/raven/Raven_05_1.png",
+             filename = "__Falcon__/raven/Raven_05_1.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Raven__/raven/Raven_05_2.png",
+             filename = "__Falcon__/raven/Raven_05_2.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Raven__/raven/Raven_05_3.png",
+             filename = "__Falcon__/raven/Raven_05_3.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -438,17 +440,17 @@ data:extend({
     {
       {
         filename = "__base__/sound/fight/car-no-fuel-1.ogg",
-        volume = 0.6
+        volume = 0.5
       },
     },
     sound_minimum_speed = 0.2;
-    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.65 },
+    vehicle_impact_sound =  { filename = "__base__/sound/car-metal-impact.ogg", volume = 0.5 },
     working_sound =
     {
       sound =
       {
         filename = "__base__/sound/car-engine.ogg",
-        volume = 0.6
+        volume = 0.45
       },
       --[[activate_sound =
       {
@@ -458,7 +460,7 @@ data:extend({
       deactivate_sound =
       {
         filename = "__base__/sound/car-engine-stop.ogg",
-        volume = 0.6
+        volume = 0.5
       },
       match_speed_to_activity = true,
     },
@@ -466,12 +468,13 @@ data:extend({
     close_sound = { filename = "__base__/sound/car-door-close.ogg", volume = 0.7 },
     rotation_speed = 0.006,
     weight = 500,
+    guns = {"hydra-rocket-launcher"},
     inventory_size = 50
   },
   {
     type = "car",
     name = "falcon-shadow",
-    icon = "__Raven__/raven/Raven_icon.png",
+    icon = "__Falcon__/raven/Raven_icon.png",
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     flags = {"not-on-map", "placeable-off-grid"},
@@ -479,7 +482,7 @@ data:extend({
     energy_per_hit_point = 1,
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{0, 0}, {0, 0}},
-  collision_mask = {"not-colliding-with-itself"},
+    collision_mask = {"not-colliding-with-itself"},
     effectivity = 1,
     braking_power = "0kW",
     burner =
@@ -504,27 +507,27 @@ data:extend({
           stripes = util.multiplystripes(2,
           {
             {
-             filename = "__Raven__/raven/Raven_01_Shadow.png",
+             filename = "__Falcon__/raven/Raven_01_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_02_Shadow.png",
+             filename = "__Falcon__/raven/Raven_02_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_03_Shadow.png",
+             filename = "__Falcon__/raven/Raven_03_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_04_Shadow.png",
+             filename = "__Falcon__/raven/Raven_04_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Raven__/raven/Raven_05_Shadow.png",
+             filename = "__Falcon__/raven/Raven_05_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -537,7 +540,7 @@ data:extend({
   },
   {
     type = "recipe",
-    name = "raven",
+    name = "falcon",
     energy_required = 30,
     enabled = false,
     category = "crafting",
@@ -552,14 +555,14 @@ data:extend({
   },
   {
     type = "technology",
-    name = "raven",
-    icon = "__Raven__/raven/Raven_icon_64.png",
+    name = "falcon",
+    icon = "__Falcon__/raven/Raven_icon_64.png",
   icon_size = 64,
     effects =
     {
       {
         type = "unlock-recipe",
-        recipe = "raven"
+        recipe = "falcon"
       }
     },
     prerequisites = {"flying"},
