@@ -1,42 +1,61 @@
 global.flycar = {{},{}}
 
 local function build (ent)
-	if ent.name =="falcon-1" then
+	if ent.name == "falcon-1" then
 		table.insert(global.flycar[1], ent)
 	end
 end
 
 local function car_flying ()
 	local cars = global.flycar
-	for i,j in pairs(cars[1]) do
-		if j.valid then
-			if j.speed >= 0.3 then
-				local fly = {position = j.position, speed = j.speed, orientation = j.orientation, health = j.health}
-				local idx = j.passenger
-				local surface = j.surface
-				local inv = j.get_inventory(1).get_contents()
-				local inv2 = j.get_inventory(2).get_contents()
-				j.destroy()
-				j = surface.create_entity{name = "falcon-2", position = fly.position, force =  game.forces.player}
-				for y,u in pairs(inv) do
-					j.insert({name = y, count = u})
-				end
-				for y,u in pairs(inv2) do
-					j.insert({name = y, count = u})
-				end
-				j.orientation = fly.orientation
-				j.speed = fly.speed
-				j.health = fly.health
-				j.passenger = idx
-				local shadow = surface.create_entity{name = "falcon-shadow", position = fly.position, force =  game.forces.neutral}
-				shadow.insert({name = "solid-fuel", count = 50})
+
+	for i,vehicle in pairs(cars[1]) do
+		if vehicle.valid then
+			if vehicle.speed >= 0.3 then
+				local idx = vehicle.passenger, 
+					  surface = vehicle.surface,
+					  fly = {
+						  position = vehicle.position, 
+						  speed = vehicle.speed, 
+						  orientation = vehicle.orientation, 
+						  health = vehicle.health
+					  }
+				  	  
+
+				vehicle.destroy()
+				vehicle = surface.create_entity{
+					name = "falcon-2", 
+					position = fly.position, 
+					force = game.forces.player
+				}
+				vehicle.orientation = fly.orientation
+				vehicle.speed = fly.speed
+				vehicle.health = fly.health
+				vehicle.passenger = idx
+
+				local shadow = surface.create_entity{
+	  		  		name = "falcon-shadow", 
+		  		  	position = fly.position, 
+		  		  	force = game.forces.neutral
+		  	  	}
+				shadow.insert({name = "solid-fuel", count = 500})
 				shadow.orientation = fly.orientation
 				shadow.speed = fly.speed
-				table.insert(cars[2], {j,shadow,0.1})
+
+				for inventorySlot = 1, 3 do
+					inventory = vehicle.get_inventory(inventorySlot).get_contents()
+					
+					for name,count in pairs(inventory) do
+						vehicle.insert({name = name, count = count})
+					end
+				end
+
+				table.insert(cars[2], {vehicle, shadow, 0.1})
 			end
 		else table.remove(cars[1], i)
 		end
 	end
+	
 	for i,j in pairs(cars[2]) do
 		if j[1].valid then
 			if j[1].speed <= 0.29 then
@@ -60,19 +79,22 @@ local function car_flying ()
 					local fly = {position = j[1].position, speed = j[1].speed, orientation = j[1].orientation, health = j[1].health}
 					local inv = j[1].get_inventory(1).get_contents()
 					local inv2 = j[1].get_inventory(2).get_contents()
+					local inv3 = j[1].get_inventory(3).get_contents()
 					j[1].destroy()
 					j[2].destroy()
-					j = surface.create_entity{name = "falcon-1", position = fly.position, force =  game.forces.player}
+					j = surface.create_entity{name = "falcon-1", position = fly.position, force = game.forces.player}
 					for y,u in pairs(inv) do
 						j.insert({name = y, count = u})
 					end
 					for y,u in pairs(inv2) do
 						j.insert({name = y, count = u})
 					end
+					for y,u in pairs(inv3) do
+						j.insert({name = y, count = u})
+					end
 					j.orientation = fly.orientation
 					j.speed = fly.speed
 					j.health = fly.health
-					if tilename == "sand" or tilename == "sand-dark" then j.health = j.health - math.random(1,12) end
 					j.passenger = idx
 					table.insert(cars[1], j)
 				end
@@ -93,9 +115,14 @@ end
 
 local function drive_control(idx)
 	local player = game.players[idx]
+
 	if not player.driving then
 		local tilename = player.surface.get_tile(math.floor(player.position.x), math.floor(player.position.y)).name
-		if tilename == "deepwater" or tilename == "water" then player.character.die() return end
+
+		if tilename == "deepwater" or tilename == "water" then 
+			player.character.die()
+			return 
+		end
 	end
 end
 
