@@ -1,61 +1,63 @@
-global.flycar = {{},{}}
+global.flycar = {{}, {}}
+global.birds = {
+	falcon    = { vehicle = "falcon-1",    airborne = "falcon-2",    shadow = "falcon-shadow"    },
+	sparrow   = { vehicle = "sparrow-1",   airborne = "sparrow-2",   shadow = "sparrow-shadow"   },
+	albatross = { vehicle = "albatross-1", airborne = "albatross-2", shadow = "albatross-shadow" }
+}
 
-local function build (ent)
-	if ent.name == "falcon-1" then
+local function build(ent)
+	if ent.name == global.birds.falcon.vehicle then
 		table.insert(global.flycar[1], ent)
 	end
 end
 
-local function car_flying ()
-	local cars = global.flycar
+local function car_flying()
+	local falcon = global.birds.falcon,
+		  cars   = global.flycar
 
-	for i,vehicle in pairs(cars[1]) do
-		if vehicle.valid then
-			if vehicle.speed >= 0.3 then
-				local passengerIndex = vehicle.passenger
-				local surface = vehicle.surface
-				local vehicleAirborn = {
-					position = vehicle.position,
-					speed = vehicle.speed,
-					orientation = vehicle.orientation,
-					health = vehicle.health
-				}
-				local shadow = surface.create_entity{
-	  		  		name = "falcon-shadow",
-		  		  	position = vehicleAirborn.position,
-		  		  	force = game.forces.neutral
-		  	  	}
-				local inventoryCache = {
+	for index,vehicle in pairs(cars[1]) do
+		if vehicle.valid and vehicle.speed >= 0.3 then
+			local vehicleClone = {
+				position 	= vehicle.position,
+				speed 		= vehicle.speed,
+				orientation = vehicle.orientation,
+				health    	= vehicle.health,
+				passenger 	= vehicle.passenger,
+				surface 	= vehicle.surface,
+				inventory = {
 					vehicle.get_inventory(1).get_contents(),
 					vehicle.get_inventory(2).get_contents(),
 					vehicle.get_inventory(3).get_contents()
 				}
+	  		  	position = vehicleClone.position
+	  	  	}
 
-				vehicle.destroy()
-				vehicle = surface.create_entity{
-					name = "falcon-2",
-					position = vehicleAirborn.position,
-					force = game.forces.player
-				}
+			vehicle.destroy()
+			vehicle = vehicleClone.surface.create_entity{
+				position = vehicleClone.position
+			}
 
-				for i,inventory in pairs(inventoryCache) do
-					for name,count in pairs(inventory) do
-						vehicle.insert({name = name, count = count})
+			for i,inventory in pairs(vehicleClone.inventory) do
+				for name,count in pairs(inventory) do
+					vehicle.insert({name = name, count = count})
+
+					if i == 1 then
+						shadow.insert({name = name, count = count})
 					end
 				end
-
-				vehicle.orientation = vehicleAirborn.orientation
-				vehicle.speed = vehicleAirborn.speed
-				vehicle.health = vehicleAirborn.health
-				vehicle.passenger = passengerIndex
-
-				shadow.insert({name = "solid-fuel", count = 500})
-				shadow.orientation = vehicleAirborn.orientation
-				shadow.speed = vehicleAirborn.speed
-
-				table.insert(cars[2], {vehicle, shadow, 0.1})
 			end
-		else table.remove(cars[1], i)
+
+			vehicle.orientation = vehicleClone.orientation
+			vehicle.speed 		= vehicleClone.speed
+			vehicle.health 		= vehicleClone.health
+			vehicle.passenger 	= vehicleClone.passenger
+			shadow.orientation  = vehicleClone.orientation
+			shadow.speed 	    = vehicleClone.speed
+
+			table.insert(cars[2], {vehicle, shadow, 0.1})
+
+		elseif not vehicle.valid then
+			table.remove(cars[1], index)
 		end
 	end
 	
@@ -85,7 +87,7 @@ local function car_flying ()
 					local inv3 = j[1].get_inventory(3).get_contents()
 					j[1].destroy()
 					j[2].destroy()
-					j = surface.create_entity{name = "falcon-1", position = fly.position, force = game.forces.player}
+					j = surface.create_entity{name = falcon.vehicle, position = fly.position, force = game.forces.player}
 					for y,u in pairs(inv) do
 						j.insert({name = y, count = u})
 					end
