@@ -2,7 +2,7 @@ data:extend({
   {
     type = "item",
     name = "falcon-1",
-    icon = "__Falcon__/raven/Raven_icon.png",
+    icon = "__Falcon__/falcon/Falcon_icon.png",
     flags = {"goes-to-quickbar"},
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
@@ -12,7 +12,7 @@ data:extend({
   {
     type = "car",
     name = "falcon-1",
-    icon = "__Falcon__/raven/Raven_icon.png",
+    icon = "__Falcon__/falcon/Falcon_icon.png",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
     minable = {mining_time = 1, result = "falcon-1"},
     max_health = 250,
@@ -108,52 +108,52 @@ data:extend({
           stripes =
           {
             {
-             filename = "__Falcon__/raven/Raven_01.png",
+             filename = "__Falcon__/falcon/Falcon_01.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_01_2.png",
+             filename = "__Falcon__/falcon/Falcon_01_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02.png",
+             filename = "__Falcon__/falcon/Falcon_02.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_2.png",
+             filename = "__Falcon__/falcon/Falcon_02_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03.png",
+             filename = "__Falcon__/falcon/Falcon_03.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_2.png",
+             filename = "__Falcon__/falcon/Falcon_03_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04.png",
+             filename = "__Falcon__/falcon/Falcon_04.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_2.png",
+             filename = "__Falcon__/falcon/Falcon_04_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_05.png",
+             filename = "__Falcon__/falcon/Falcon_05.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_2.png",
+             filename = "__Falcon__/falcon/Falcon_05_2.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -170,27 +170,27 @@ data:extend({
           stripes = util.multiplystripes(2,
           {
             {
-             filename = "__Falcon__/raven/Raven_01_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_01_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_02_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_03_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_04_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_05_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -236,7 +236,7 @@ data:extend({
   {
     type = "car",
     name = "falcon-2",
-    icon = "__Falcon__/raven/Raven_icon.png",
+    icon = "__Falcon__/falcon/Falcon_icon.png",
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     flags = {"pushable", "placeable-neutral", "player-creation", "placeable-off-grid"},
@@ -333,102 +333,102 @@ data:extend({
           stripes =
           {
             {
-             filename = "__Falcon__/raven/Raven_01.png",
+             filename = "__Falcon__/falcon/Falcon_01.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_01_1.png",
+             filename = "__Falcon__/falcon/Falcon_01_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_01_2.png",
+             filename = "__Falcon__/falcon/Falcon_01_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_01_3.png",
+             filename = "__Falcon__/falcon/Falcon_01_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02.png",
+             filename = "__Falcon__/falcon/Falcon_02.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_1.png",
+             filename = "__Falcon__/falcon/Falcon_02_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_2.png",
+             filename = "__Falcon__/falcon/Falcon_02_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_3.png",
+             filename = "__Falcon__/falcon/Falcon_02_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03.png",
+             filename = "__Falcon__/falcon/Falcon_03.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_1.png",
+             filename = "__Falcon__/falcon/Falcon_03_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_2.png",
+             filename = "__Falcon__/falcon/Falcon_03_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_3.png",
+             filename = "__Falcon__/falcon/Falcon_03_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04.png",
+             filename = "__Falcon__/falcon/Falcon_04.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_1.png",
+             filename = "__Falcon__/falcon/Falcon_04_1.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_2.png",
+             filename = "__Falcon__/falcon/Falcon_04_2.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_3.png",
+             filename = "__Falcon__/falcon/Falcon_04_3.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_05.png",
+             filename = "__Falcon__/falcon/Falcon_05.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_1.png",
+             filename = "__Falcon__/falcon/Falcon_05_1.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_2.png",
+             filename = "__Falcon__/falcon/Falcon_05_2.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_3.png",
+             filename = "__Falcon__/falcon/Falcon_05_3.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -474,7 +474,7 @@ data:extend({
   {
     type = "car",
     name = "falcon-shadow",
-    icon = "__Falcon__/raven/Raven_icon.png",
+    icon = "__Falcon__/falcon/Falcon_icon.png",
     subgroup = "transport",
     order = "b[personal-transport]-a[car]",
     flags = {"not-on-map", "placeable-off-grid"},
@@ -507,27 +507,27 @@ data:extend({
           stripes = util.multiplystripes(2,
           {
             {
-             filename = "__Falcon__/raven/Raven_01_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_01_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_02_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_02_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_03_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_03_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_04_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_04_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 16,
             },
             {
-             filename = "__Falcon__/raven/Raven_05_Shadow.png",
+             filename = "__Falcon__/falcon/Falcon_05_Shadow.png",
              width_in_frames = 1,
              height_in_frames = 8,
             },
@@ -556,7 +556,7 @@ data:extend({
   {
     type = "technology",
     name = "falcon",
-    icon = "__Falcon__/raven/Raven_icon_64.png",
+    icon = "__Falcon__/falcon/Falcon_icon_64.png",
   icon_size = 64,
     effects =
     {

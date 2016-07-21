@@ -12,15 +12,14 @@ local function car_flying ()
 	for i,vehicle in pairs(cars[1]) do
 		if vehicle.valid then
 			if vehicle.speed >= 0.3 then
-				local idx = vehicle.passenger, 
-					  surface = vehicle.surface,
-					  fly = {
-						  position = vehicle.position, 
-						  speed = vehicle.speed, 
-						  orientation = vehicle.orientation, 
+				local idx = vehicle.passenger
+				local surface = vehicle.surface
+				local fly = {
+						  position = vehicle.position,
+						  speed = vehicle.speed,
+						  orientation = vehicle.orientation,
 						  health = vehicle.health
 					  }
-				  	  
 
 				vehicle.destroy()
 				vehicle = surface.create_entity{
