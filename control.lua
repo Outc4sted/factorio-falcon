@@ -12,42 +12,46 @@ local function car_flying ()
 	for i,vehicle in pairs(cars[1]) do
 		if vehicle.valid then
 			if vehicle.speed >= 0.3 then
-				local idx = vehicle.passenger
+				local passengerIndex = vehicle.passenger
 				local surface = vehicle.surface
-				local fly = {
-						  position = vehicle.position,
-						  speed = vehicle.speed,
-						  orientation = vehicle.orientation,
-						  health = vehicle.health
-					  }
+				local vehicleAirborn = {
+					position = vehicle.position,
+					speed = vehicle.speed,
+					orientation = vehicle.orientation,
+					health = vehicle.health
+				}
+				local shadow = surface.create_entity{
+	  		  		name = "falcon-shadow",
+		  		  	position = vehicleAirborn.position,
+		  		  	force = game.forces.neutral
+		  	  	}
+				local inventoryCache = {
+					vehicle.get_inventory(1).get_contents(),
+					vehicle.get_inventory(2).get_contents(),
+					vehicle.get_inventory(3).get_contents()
+				}
 
 				vehicle.destroy()
 				vehicle = surface.create_entity{
-					name = "falcon-2", 
-					position = fly.position, 
+					name = "falcon-2",
+					position = vehicleAirborn.position,
 					force = game.forces.player
 				}
-				vehicle.orientation = fly.orientation
-				vehicle.speed = fly.speed
-				vehicle.health = fly.health
-				vehicle.passenger = idx
 
-				local shadow = surface.create_entity{
-	  		  		name = "falcon-shadow", 
-		  		  	position = fly.position, 
-		  		  	force = game.forces.neutral
-		  	  	}
-				shadow.insert({name = "solid-fuel", count = 500})
-				shadow.orientation = fly.orientation
-				shadow.speed = fly.speed
-
-				for inventorySlot = 1, 3 do
-					inventory = vehicle.get_inventory(inventorySlot).get_contents()
-					
+				for i,inventory in pairs(inventoryCache) do
 					for name,count in pairs(inventory) do
 						vehicle.insert({name = name, count = count})
 					end
 				end
+
+				vehicle.orientation = vehicleAirborn.orientation
+				vehicle.speed = vehicleAirborn.speed
+				vehicle.health = vehicleAirborn.health
+				vehicle.passenger = passengerIndex
+
+				shadow.insert({name = "solid-fuel", count = 500})
+				shadow.orientation = vehicleAirborn.orientation
+				shadow.speed = vehicleAirborn.speed
 
 				table.insert(cars[2], {vehicle, shadow, 0.1})
 			end
