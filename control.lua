@@ -29,11 +29,17 @@ local function car_flying()
 					vehicle.get_inventory(2).get_contents(),
 					vehicle.get_inventory(3).get_contents()
 				}
+			},
+			shadow = vehicleClone.surface.create_entity{
+  		  		name     = falcon.shadow,
+	  		  	force    = game.forces.neutral,
 	  		  	position = vehicleClone.position
 	  	  	}
 
 			vehicle.destroy()
 			vehicle = vehicleClone.surface.create_entity{
+				name     = falcon.airborne,
+				force    = game.forces.player,
 				position = vehicleClone.position
 			}
 
