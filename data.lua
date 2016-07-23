@@ -35,7 +35,6 @@ data:extend({
     collision_box = {{-0.7, -1}, {0.7, 1}},
     selection_box = {{-0.7, -1}, {0.7, 1}},
     effectivity = 0.75,
-    acceleration_per_energy = 0.95,
     braking_power = "130kW",
     burner =
     {
